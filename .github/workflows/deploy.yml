@@ -1,0 +1,27 @@
+name: 'Deploy'
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  
+
+jobs:
+  Validate:
+    runs-on: ubuntu-latest
+      image: node:latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Build Code
+        run: npm run build
+      - name: Clone current verison
+        run: git clone -b pages https://ggMartinez:${GITHUB_TOKEN}@github.com/ggMartinez/ggMartinez.github.io.git /tmp/pages
+      - name: Merge current version
+        run: mv * /tmp/pages/
+      - name: Commit and push
+        run: cd /tmp/pages && git config user.name "Gonzalo Martinez" && git config user.email "ggmartinez.utu@gmail.com" && git add . && git commit -m "Merge" && git push 
+      
