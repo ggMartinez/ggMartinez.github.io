@@ -18,7 +18,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Build Code
-        run: npm run build
+        run: npm install && npm run build
       - name: Clone current verison
         run: git clone -b pages https://ggMartinez:${GITHUB_TOKEN}@github.com/ggMartinez/ggMartinez.github.io.git /tmp/pages
       - name: Merge current version
