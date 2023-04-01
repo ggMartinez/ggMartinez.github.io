@@ -3,7 +3,7 @@ name: 'Deploy'
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -25,5 +25,4 @@ jobs:
         run: mv build/* /tmp/pages/
       - name: Commit and push
         run: cd /tmp/pages && git config user.name "Gonzalo Martinez" && git config user.email "ggmartinez.utu@gmail.com" && git add . && git commit -m "Merge" && git push 
-      
       
