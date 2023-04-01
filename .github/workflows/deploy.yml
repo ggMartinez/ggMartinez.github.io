@@ -26,3 +26,4 @@ jobs:
       - name: Commit and push
         run: cd /tmp/pages && git config user.name "Gonzalo Martinez" && git config user.email "ggmartinez.utu@gmail.com" && git add . && git commit -m "Merge" && git push 
       
+      
